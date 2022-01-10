@@ -1,6 +1,5 @@
 <h2>商品一覧</h2>
 
-<h3>商品一覧</h3>
 <table>
   <thead>
     <tr>
@@ -17,9 +16,17 @@
       <td><%=item.id%></td>
       <td><%=link_to item.name%></td>
       <td><%=item.price%></td>
-      <td><%=%></td>
-      <td><%=item.boolean%></td>
+      <td><%=item.genre.name%></td>
+      <td>
+        <%if item.is_active == true%>
+        <font color="green">販売中</font>
+        <%else%>
+        <font color="red">販売停止中</font>
+        <%end%>
+      </td>
     </tr>
     <%end%>
   </tbody>
+
+  <%=paginate @items%>
 </table>
