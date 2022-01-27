@@ -13,11 +13,41 @@ Rails.application.routes.draw do
   }
 
     root :to => 'public/homes#top'
+    get '/about' => 'public/homes#about'
     get '/admin' => 'admin/homes#top'
 
     namespace :admin do
       resources :genres
       resources :items, only:[:new, :create, :index, :show, :edit, :update]
-      resources :customers, only:[:index, :show, :edit, ]
+      resources :customers, only:[:index, :show, :edit, :update]
+      resources :orders, only:[:show, :update]
+      resources :order_details, only:[:update]
     end
+
+    scope module: :public do
+      resources :items, only:[:index, :show]
+      resources :customers, only:[:show, :edit, :update] do
+        collection do
+          get 'quit'
+        end
+        collection do
+          patch 'out'
+        end
+      end
+      resources :cart_items, only:[:index, :update, :destroy, :create] do
+        collection do
+          delete 'destroy_all'
+        end
+      end
+      resources :orders, only:[:new, :index, :show] do
+        collection do
+          post 'log'
+        end
+        collection do
+          get 'thanks'
+        end
+      end
+      resources :shipping_addresses, only:[:index, :edit, :create, :update, :destroy]
+    end
+
 end

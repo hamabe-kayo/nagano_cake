@@ -1,0 +1,50 @@
+<h2><%=@customer.last_name%><%@customer.first_name%>の会員情報</h2>
+
+<%=form_with model: @customer, url: admin_customer_path(@customer) do |f|%>
+
+<div class="field">
+  <%=f.label "名前"%>
+  <%=f.label "(姓)"%>
+  <%=f.text_field :last_name, autofocus: true%>
+  <%=f.label "(名)"%>
+  <%=f.text_field :first_name, autofocus: true%>
+</div>
+
+<div class="field">
+  <%=f.label "フリガナ"%>
+  <%=f.label "(セイ)"%>
+  <%=f.text_field :last_name_kana, autofocus: true%>
+  <%=f.label "(メイ)"%>
+  <%=f.text_field :first_name_kana, autofocus: true%>
+</div>
+
+<div class="field">
+  <%=f.label "郵便番号(ハイフンなし)"%>
+  <%=f.text_field :postal_code, autofocus: true%>
+</div>
+
+<div class="field">
+  <%=f.label "住所"%>
+  <%=f.text_area :address, autofocus: true%>
+</div>
+
+<div class="field">
+  <%=f.label "電話番号(ハイフンなし)"%>
+  <%=f.text_field :telephone_number, autofocus: true%>
+</div>
+
+<div class="field">
+  <%= f.label "メールアドレス" %>
+  <%= f.email_field :email, autofocus: true %>
+</div>
+
+<div class="field">
+  <%=f.label "会委員ステータス"%>
+  <%=f.radio_button :is_active, true%>有効
+  <%=f.radio_button :is_active, false%>退会
+</div>
+
+<div class="actions">
+  <%=f.submit "変更を保存"%>
+</div>
+<%end%>
