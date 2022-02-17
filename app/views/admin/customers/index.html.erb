@@ -13,13 +13,13 @@
     <%@customers.each do |customer|%>
     <tr>
       <td><%=customer.id%></td>
-      <td><%=link_to customer.name%></td>
+      <td><%=link_to customer.full_name, admin_customer_path(customer.id)%></td>
       <td><%=customer.email%></td>
       <td>
         <%if customer.is_active == true%>
         <font color="green">有効</font>
         <%else%>
-        <font color="red"></font>
+        <font color="red">無効</font>
         <%end%>
       </td>
     </tr>

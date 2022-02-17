@@ -20,7 +20,7 @@
     </tr>
     <tr>
       <th>税込価格</br>(税抜価格)</th>
-      <td><%=@item.add_tax_price.to_s(:dalimited)%>(<%=@item.price%>)円</td>
+      <td><%=@item.with_tax_price%>(<%=@item.price%>)円</td>
     </tr>
     <tr>
       <th>販売ステータス</th>
@@ -28,7 +28,7 @@
         <%if @item.is_active == true%>
         <font color="green">販売中</font>
         <%else%>
-        <font coler="red">販売停止中</font>
+        <font color="red">販売停止中</font>
         <%end%>
       </td>
     </tr>

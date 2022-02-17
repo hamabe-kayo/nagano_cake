@@ -1,4 +1,4 @@
-<h2><%=@customer.last_name%><%=@customer.first_name%>の会員詳細</h2>
+<h2><%=@customer.full_name%>の会員詳細</h2>
 
 <table>
   <tr>
@@ -11,7 +11,7 @@
   </tr>
   <tr>
     <th>フリガナ</th>
-    <td><%=@customer.last_name_kana%> <%=@customer.firs%></td>
+    <td><%=@customer.last_name_kana%> <%=@customer.first_name_kana%></td>
   </tr>
   <tr>
     <th>郵便番号</th>

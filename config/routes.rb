@@ -39,10 +39,8 @@ Rails.application.routes.draw do
           delete 'destroy_all'
         end
       end
-      resources :orders, only:[:new, :index, :show] do
-        collection do
-          post 'log'
-        end
+      post 'orders/log', to: 'orders#log'
+      resources :orders, only:[:new, :create, :index, :show] do
         collection do
           get 'thanks'
         end

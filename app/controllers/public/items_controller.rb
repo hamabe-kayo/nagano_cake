@@ -2,7 +2,7 @@ class Public::ItemsController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-    @items=Item.all.order(id: :desc).page(params[:page]).reverse_order
+    @items=Item.all.order(id: :desc).page(params[:page]).per(8).reverse_order
   end
 
   def show

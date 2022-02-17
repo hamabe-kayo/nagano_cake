@@ -1,21 +1,21 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-1">
+    <div class="col-2">
 
     </div>
 
-    <div class="col-md-11">
+    <div class="col-md-4">
       <%=attachment_image_tag @item, :image, :fill,300,250,fallback: "no_image.jpg"%>
-      <div class="itemexplanation">
+    </div>
+
+    <div class="col-md-6">
         <h3><%=@item.name%></h3>
         <p><%=@item.introduction%></p>
-        <p><%=@item.price%></p>
-        <%=form_with model: @cart_items, url: cart_items_path, local: true do |f|%>
-        <div>
-          <%=f.select :amount, *[1..10], prompt: "個数選択"%>
-          <%=f.hidden_field :item_id, value: @item.id%>
-        　<%=f.submit "カートに入れる"%>
-      　</div>
+        <p>¥<%=@item.with_tax_price%>(税込)</p>
+
+        <%=form_with model: @cart_item, url: cart_items_path, local: true do |f|%>
+        <%=f.hidden_field :item_id, value: @item.id%>
+        <%=f.select :amount, *[1..10], prompt: "個数を選択してください"%>
+        <%=f.submit "カートに入れる"%>
         <%end%>
-      </div>
     </div>

@@ -1,27 +1,60 @@
-<h2>ショッピングカート</h2>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-1">
 
-<table>
-  <thead>
-    <tr>
-      <th>商品名</th>
-      <th>単価(税込)</th>
-      <th>数量</th>
-      <th>小計</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
+    </div>
 
-  <tbody>
-    <%@cart_items.each do |cart_item|%>
-    <tr>
-      <td><%=attachment_image_tag cart_item.item, :image, :fill,70,50,fallback: "no_image.jpg"%><%=cart_item.item.name%></td>
-      <td><%=(cart_item.item.price * 1.1).floor%></td>
-      <td>
-        <%=form_with model: cart_item, url: cart_items_path, local: true do |f|%>
-        <%=f.select :amount, *[1..10]%>
+    <div class="col-md-10">
+      <div class="top">
+        <span class="title">ショッピングカート</span>
+        <span class="destroy-all">
+        <%=link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger btn-md"%>
+        </span>
+      </div>
+
+      <table border="1" style="border-collapse: collapse">
+        <thead>
+          <tr>
+          <th width="500px">商品名</th>
+          <th width="150px">単価(税込)</th>
+          <th width="150px">数量</th>
+          <th width="150px">小計</th>
+          <th width="150px"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <%@cart_items.each do |cart_item|%>
+          <tr>
+            <td><%=attachment_image_tag cart_item.item, :image, :fill,70,50,fallback: "no_image.jpg"%><%=cart_item.item.name%></td>
+            <td><%=cart_item.item.with_tax_price%></td>
+            <td style="text-align: center;">
+              <%=form_with model: @cart_item, url: cart_item_path(cart_item.id), method: :patch, local: true do |f|%>
+              <%=f.select :amount, *[1..20], {prompt: "#{cart_item.amount}"}%>
+              <%=f.submit "変更", class: "btn btn-success btn-sm"%>
+              <%end%>
+            </td>
+            <td><%=cart_item.subtotal%></td>
+            <td style="text-align: center;"><%=link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger btn-sm"%></td>
+          </tr>
         <%end%>
-      </td>
-    </tr>
-    <%end%>
-  </tbody>
-</table>
+        </tbody>
+      </table>
+
+      <div class="totalprice_table">
+        <span class="continue">
+          <%=link_to "買い物を続ける", items_path, class: "btn btn-primary btn-md"%>
+        </span>
+        <table border="1" style="border-collapse: collapse">
+          <tr>
+            <th width="100px">合計金額</th>
+            <td width="100px"><%=@total%>円</td>
+          </tr>
+        </table>
+        </div>
+
+        <div class="orderlink">
+        <%=link_to "情報入力に進む", new_order_path, class: "btn btn-success btn-md"%>
+        </div>
+      </div>
+      <div class="col-1"></div>
+    </div>

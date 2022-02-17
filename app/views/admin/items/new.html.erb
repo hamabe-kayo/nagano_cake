@@ -1,6 +1,6 @@
 <h2>商品新規登録</h2>
 
-<%=form_with model: @item, local:true do |f|%>
+<%=form_with model: @item, url: admin_items_path, local: true do |f|%>
 <div class="field">
   <%=f.label "商品画像"%>
   <%=f.attachment_field :image%>
@@ -26,7 +26,7 @@
   <%=f.text_field :price%>円
 </div>
 
-<div class="field">
+<div class="status">
   <%=f.label "販売ステータス"%>
   <%=f.radio_button :is_active, true%>販売中
   <%=f.radio_button :is_active, false%>販売停止中

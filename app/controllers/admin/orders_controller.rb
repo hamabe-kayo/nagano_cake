@@ -3,7 +3,7 @@ class Admin::OrdersController < ApplicationController
   def show
     @order=Order.find(params[:id])
     @order_details=OrderDetail.where(order_id: @order.id)
-    @total=@order_details.inject(0) {|sum, item| sum + item.sum_of_pri}
+    @total=@order_details.inject(0) {|sum, item| sum + item.sum_of_price}
   end
 
   def order_params

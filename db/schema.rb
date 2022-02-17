@@ -10,12 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_22_223159) do
-
-  create_table "admin_genres", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 2022_02_15_140603) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -79,20 +74,29 @@ ActiveRecord::Schema.define(version: 2022_01_22_223159) do
     t.integer "item_id"
     t.integer "order_price"
     t.integer "amount"
-    t.integer "making_status", limit: 4, default: 0, null: false
+    t.integer "making_status", limit: 3, default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
     t.integer "customers_id"
-    t.string "shipping_pastal_code"
+    t.string "shipping_postal_code"
     t.string "shipping_address"
     t.string "shipping_name"
     t.integer "postage"
     t.integer "payment_method", limit: 2, default: 0, null: false
-    t.integer "paymaent"
     t.integer "order_status", limit: 5, default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "payment"
+  end
+
+  create_table "shipping_addresses", force: :cascade do |t|
+    t.integer "customer_id"
+    t.string "name"
+    t.string "postal_code"
+    t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

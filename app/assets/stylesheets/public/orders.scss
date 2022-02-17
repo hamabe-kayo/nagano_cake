@@ -1,3 +1,35 @@
 // Place all the styles related to the public/orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.address_select{
+  margin-bottom: 20px;
+}
+
+.orderlog_link{
+  text-align: center;
+}
+
+.order_table{
+  display: flex;
+}
+
+.item_table{
+}
+
+.totalprice{
+  margin-top: 0;
+  margin-left: 30px;
+}
+
+.order_method{
+  margin-top: 10px;
+}
+
+.order_confirm{
+  text-align: center;
+}
+
+.thanks{
+  text-align: center;
+}

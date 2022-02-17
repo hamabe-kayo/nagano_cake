@@ -1,6 +1,6 @@
-<h2><%=@customer.last_name%><%@customer.first_name%>の会員情報</h2>
+<h2><%=@customer.full_name%>の会員情報編集</h2>
 
-<%=form_with model: @customer, url: admin_customer_path(@customer) do |f|%>
+<%=form_with model: @customer,  local: true  do |f|%>
 
 <div class="field">
   <%=f.label "名前"%>
@@ -25,7 +25,7 @@
 
 <div class="field">
   <%=f.label "住所"%>
-  <%=f.text_area :address, autofocus: true%>
+  <%=f.text_area :address, size: "50x1", autofocus: true%>
 </div>
 
 <div class="field">
@@ -39,7 +39,7 @@
 </div>
 
 <div class="field">
-  <%=f.label "会委員ステータス"%>
+  <%=f.label "会員ステータス"%>
   <%=f.radio_button :is_active, true%>有効
   <%=f.radio_button :is_active, false%>退会
 </div>

@@ -24,4 +24,16 @@ class Customers::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  protected
+  def reject_customer
+    @customer=Customer.find_by(name: params[:customer][:email])
+    if @customer
+      if @customer.valid_password?(params[:customer][:password]) && (@customer.is_active == false)
+        redirect_to new_customer_refistration
+      else
+        flash[:notice]="項目を入力してください"
+      end
+    end
+  end
 end
