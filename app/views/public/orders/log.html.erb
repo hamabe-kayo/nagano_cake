@@ -7,7 +7,7 @@
       <h2>注文情報確認</h2>
       <div class="order_table">
         <div class="item_table">
-          <table border="1" style="border-cllapse: collapse">
+          <table border="1" style="border-collapse: collapse">
             <thead>
               <tr>
                 <th width="300px">商品名</th>
@@ -41,7 +41,7 @@
             </tr>
             <tr>
               <th width="100px">請求金額</th>
-              <td width="100px"><%=(@total + 800).to_s%>円</td>
+              <td width="100px"><%=@payment%>円</td>
             </tr>
           </table>
         </div>
@@ -67,7 +67,7 @@
         <%=f.hidden_field :shipping_address, value: @order.shipping_address%>
         <%=f.hidden_field :shipping_name, value: @order.shipping_name%>
         <%=f.hidden_field :payment_method, value: @order.payment_method%>
-        <%=f.hidden_field :payment%>
+        <%=f.hidden_field :payment, :value => @payment%>
         <%=f.submit "注文を確定する", class: "btn btn-success btn-md"%>
         <%end%>
       </div>

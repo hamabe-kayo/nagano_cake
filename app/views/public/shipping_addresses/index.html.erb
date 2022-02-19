@@ -1,48 +1,62 @@
-<h2>配送先登録一覧</h2>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-1"></div>
 
-<%=form_with model: @shipping_address, local: true do |f|%>
-<table>
-  <tr>
-    <th><%=f.label "郵便番号(ハイフンなし)"%></th>
-    <td><%=f.text_field :postal_code, autofocus: true%></td>
-    <td></td>
-  </tr>
-  <tr>
-    <th><%=f.label "住所"%></th>
-    <td><%=f.text_area :address, size: "50x1", autofocus: true%></td>
-    <td></td>
-  </tr>
-  <tr>
-    <th><%=f.label "宛名"%></th>
-    <td><%=f.text_field :name, autofocus: true%></td>
-    <td></td>
-  </tr>
-  <tr>
-    <th></th>
-    <td></td>
-    <td><%=f.submit "新規登録"%></td>
-  </tr>
-</table>
-<%end%>
+    <div class="col-md-10">
+      <h2>配送先登録一覧</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>郵便番号</th>
-      <th>住所</th>
-      <th>宛名</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-  <tbody>
-  <%@shipping_addresses.each do |shipping_address|%>
-    <tr>
-      <td><%=shipping_address.postal_code%></td>
-      <td><%=shipping_address.address%></td>
-      <td><%=shipping_address.name%></td>
-      <td><%=link_to "編集する", edit_shipping_address_path(shipping_address.id)%></td>
-      <td><%=link_to "削除する", shipping_addresses_path(shipping_address.id)%></td>
-    </tr>
-  </tbody>
-  <%end%>
-</table>
+      <%=form_with model: @shipping_address, local: true do |f|%>
+      <table>
+        <tr>
+          <th><%=f.label "郵便番号(ハイフンなし)"%></th>
+          <td><%=f.text_field :postal_code, autofocus: true%></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th><%=f.label "住所"%></th>
+          <td><%=f.text_area :address, size: "50x1", autofocus: true%></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th><%=f.label "宛名"%></th>
+          <td><%=f.text_field :name, autofocus: true%></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td></td>
+          <td><%=f.submit "新規登録", class: "btn btn-success btn-md"%></td>
+        </tr>
+      </table>
+      <%end%>
+
+      <div class="address_index">
+        <table border="1" style="border-collapse: collapse">
+          <thead>
+            <tr>
+              <th width="80px">郵便番号</th>
+              <th width="300px">住所</th>
+              <th width="150px">宛名</th>
+              <th width="200px"></th>
+            </tr>
+          </thead>
+          <tbody>
+          <%@shipping_addresses.each do |shipping_address|%>
+            <tr>
+             <td><%=shipping_address.postal_code%></td>
+              <td><%=shipping_address.address%></td>
+              <td><%=shipping_address.name%></td>
+              <td  style="text-align: center;">
+                <%=link_to "編集する", edit_shipping_address_path(shipping_address.id), class: "btn btn-success btn-md"%>
+                <%=link_to "削除する", shipping_addresses_path(shipping_address.id), class: "btn btn-danger btn-md"%></td>
+            </tr>
+          </tbody>
+          <%end%>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-1"></div>
+
+  </div>
+</div>

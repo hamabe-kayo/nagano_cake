@@ -1,6 +1,6 @@
 <h2>注文履歴一覧</h2>
 
-<table>
+<table border="1" style="border-collapse: collapse">
   <thead>
     <tr>
       <th>注文日</th>
@@ -12,10 +12,19 @@
     </tr>
   </thead>
   <tbody>
-    <%@order.each do |order|%>
+    <%@orders.each do |order|%>
     <tr>
       <td><%=order.created_at.strftime('%Y/%m/%d')%></td>
-      <td></td>
+      <td>
+        <%=order.order.shipping_postal_code%></br>
+        <%=order.order.shipping_address%></br>
+        <%=order.order.shipping_name%>
+      </td>
+      <td>
+        <%order.items.each do |order.item|%>
+          <%=order.item.name%>
+        <%end%>
+      </td>
     </tr>
     <%end%>
   </tbody>
