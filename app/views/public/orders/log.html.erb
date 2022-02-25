@@ -37,11 +37,11 @@
             </tr>
             <tr>
               <th width="100px">商品合計</th>
-              <td width="100px"><%=@total%>円</td>
+              <td width="100px"><%=@payment%>円</td>
             </tr>
             <tr>
               <th width="100px">請求金額</th>
-              <td width="100px"><%=@payment%>円</td>
+              <td width="100px"><%=@total%>円</td>
             </tr>
           </table>
         </div>
@@ -62,7 +62,7 @@
 
       <div class="order_confirm">
         <%=form_with model: @order, url: { action: "create" }, local: true do |f|%>
-        <%=f.hidden_field :customers_id, value: @order.customers_id%>
+        <%=f.hidden_field :customer_id, value: @order.customer_id%>
         <%=f.hidden_field :shipping_postal_code, value: @order.shipping_postal_code%>
         <%=f.hidden_field :shipping_address, value: @order.shipping_address%>
         <%=f.hidden_field :shipping_name, value: @order.shipping_name%>

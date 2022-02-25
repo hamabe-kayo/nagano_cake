@@ -80,12 +80,13 @@ ActiveRecord::Schema.define(version: 2022_02_15_140603) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "customers_id"
+    t.integer "customer_id"
     t.string "shipping_postal_code"
     t.string "shipping_address"
     t.string "shipping_name"
     t.integer "postage"
     t.integer "payment_method", limit: 2, default: 0, null: false
+    t.integer "paymaent"
     t.integer "order_status", limit: 5, default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

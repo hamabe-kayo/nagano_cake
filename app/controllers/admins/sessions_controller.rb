@@ -17,6 +17,7 @@ class Admins::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+  
 
   # protected
 
