@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     end
 
     scope module: :public do
+      root "admin/homes#top"
       resources :items, only:[:index, :show]
       resources :customers, only:[:show, :edit, :update] do
         collection do

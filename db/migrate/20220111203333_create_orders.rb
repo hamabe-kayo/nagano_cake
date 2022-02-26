@@ -8,7 +8,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.string :shipping_name
       t.integer :postage
       t.integer :payment_method, default: 0, null: false, limit: 2
-      t.integer :paymaent
+      t.integer :payment
       t.integer :order_status, default: 0, null: false, limit:5
       t.datetime :created_at
       t.datetime :updated_at
